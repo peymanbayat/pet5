@@ -5,7 +5,7 @@ import telebot
 import threading
 import numpy as np
 from PIL import Image
-import pygame as pygame
+#import pygame as pygame
 from ultralytics import YOLO
 from datetime import datetime, timedelta
 
@@ -57,10 +57,10 @@ classes = [
     'teddy bear', 'hair drier', 'toothbrush'
 ]
 
-pygame.init()
-pygame.mixer.init()
-alarm_played = False
-pygame.mixer.music.load(os.path.abspath('alarm.mp3'))
+#pygame.init()
+#pygame.mixer.init()
+#alarm_played = False
+#pygame.mixer.music.load(os.path.abspath('alarm.mp3'))
 
 COLORS = np.random.uniform(0, 255, size=(len(classes), 3))
 
@@ -108,14 +108,14 @@ while True:
                                 send_message(chat_id, "Dog has detected on couch!")
                                 last_sent_time = datetime.now()
                                 send_photo(chat_id, frame)
-                            pygame.mixer.music.play(-1)  # play in a loop
+                            #pygame.mixer.music.play(-1)  # play in a loop
                             alarm_played = True
                     else:
                         if alarm_played:
                             not_detected += 1
                             if not_detected > 10:
                                 not_detected = 0
-                                pygame.mixer.music.stop()
+                                #pygame.mixer.music.stop()
                                 alarm_played = False
 
     couch_bed_flag = 0
